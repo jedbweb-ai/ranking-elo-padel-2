@@ -745,14 +745,14 @@ function drawTable(){
       <th>PJ</th><th>PG</th><th>%</th><th class="hide-s">Racha</th>
     </tr></thead><tbody>`;
   JUGADORES.forEach((p, i) => {
-    const st = stats[p], prov = st.pj < CONFIG.minPartidos;
+    const st = stats[p];
     const w  = 6 + (elo[p] - min) / (max - min || 1) * 94;
     const r  = st.racha;
     const rc = r.gano ? "up" : "down";
     s += `<tr class="row${i===0?" p1":""}" data-p="${p}">
       <td class="pos${i===0?" p1":""}">${i+1}</td>
       <td>
-        <div class="pname">${p}${prov?'<span class="prov">provisorio</span>':""}</div>
+        <div class="pname">${p}</div>
         <div class="pbar"><i style="width:${w}%"></i></div>
       </td>
       <td><span class="elo">${Math.round(elo[p])}</span></td>
