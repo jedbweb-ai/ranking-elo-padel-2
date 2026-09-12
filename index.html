@@ -501,7 +501,7 @@ const DATOS_CSV = `fecha,jugador_a1,jugador_a2,jugador_b1,jugador_b2,set1_a,set1
 const CONFIG = {
   // titular del hero: una línea por elemento (la última va en gris)
   titulo:        ["Ranking ELO", "de pádel."],
-  subtitulo:     "datos de ejemplo",
+  subtitulo:     "",
   eloInicial:    1500,
   K:             32,
   factorMargen:  0.08,
@@ -630,7 +630,11 @@ const mesL  = f => { const [y,m] = f.split("-"); return `${MESES[+m-1]} ${y}`; }
 /* ==============================================================
    5. HEADER
    ============================================================== */
-document.getElementById("subtitle").textContent = CONFIG.subtitulo;
+if (CONFIG.subtitulo) {
+  document.getElementById("subtitle").textContent = CONFIG.subtitulo;
+} else {
+  document.getElementById("subtitle").style.display = "none";
+}
 document.getElementById("title").innerHTML = CONFIG.titulo
   .map((l, i) => i === CONFIG.titulo.length - 1 ? `<span class="b">${l}</span>` : l)
   .join("<br>");
